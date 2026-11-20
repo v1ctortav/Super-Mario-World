@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b8pl06actlbpv"]
+
+[ext_resource type="Script" uid="uid://72qdgvca1518" path="res://Scripts/bloco.gd" id="1_f5fjb"]
+[ext_resource type="Texture2D" uid="uid://dfftn4iws388q" path="res://Sprites/Cenário/Blocks (16 x 16).png" id="2_f5fjb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ec8rm"]
+size = Vector2(16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6mc3"]
+size = Vector2(16, 2)
+
+[node name="bloco" type="StaticBody2D" unique_id=1338989080]
+collision_mask = 2
+script = ExtResource("1_f5fjb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628064680]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ec8rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1446899035]
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+texture = ExtResource("2_f5fjb")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)
+
+[node name="pedaco1" type="Sprite2D" parent="." unique_id=1089704437]
+visible = false
+position = Vector2(-4, -4)
+texture = ExtResource("2_f5fjb")
+region_enabled = true
+region_rect = Rect2(16, 16, 8, 8)
+
+[node name="pedaco2" type="Sprite2D" parent="." unique_id=429897284]
+visible = false
+position = Vector2(4, -4)
+texture = ExtResource("2_f5fjb")
+region_enabled = true
+region_rect = Rect2(24, 16, 8, 8)
+
+[node name="pedaco3" type="Sprite2D" parent="." unique_id=1919759413]
+visible = false
+position = Vector2(-4, 4)
+texture = ExtResource("2_f5fjb")
+region_enabled = true
+region_rect = Rect2(16, 24, 8, 8)
+
+[node name="pedaco4" type="Sprite2D" parent="." unique_id=1970566750]
+visible = false
+position = Vector2(4, 4)
+texture = ExtResource("2_f5fjb")
+region_enabled = true
+region_rect = Rect2(24, 24, 8, 8)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1889393747]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1152468064]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_m6mc3")
+debug_color = Color(0.96568924, 0, 0.4880948, 0.41960785)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

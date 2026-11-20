@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bnymsplw6v75w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpp2h"]
+size = Vector2(180, 20)
+
+[node name="agua" type="Area2D" unique_id=220543120 groups=["agua"]]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2115903461 groups=["agua"]]
+shape = SubResource("RectangleShape2D_wpp2h")

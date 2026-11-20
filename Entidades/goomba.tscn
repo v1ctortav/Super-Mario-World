@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://pwkm7q02ncxc"]
+
+[ext_resource type="Script" uid="uid://v77nk6e40xj0" path="res://Scripts/goomba.gd" id="1_g8hn6"]
+[ext_resource type="Texture2D" uid="uid://dckl4t8cb5xau" path="res://Sprites/Goompa.png" id="2_haysp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gqlpr"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idav2"]
+atlas = ExtResource("2_haysp")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6yuy"]
+atlas = ExtResource("2_haysp")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ekax"]
+atlas = ExtResource("2_haysp")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gjx4"]
+atlas = ExtResource("2_haysp")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnpx5"]
+atlas = ExtResource("2_haysp")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vyk4q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idav2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6yuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ekax")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gjx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnpx5")
+}],
+"loop": false,
+"name": &"morrer",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iqj02"]
+
+[node name="goomba" type="CharacterBody2D" unique_id=1582579417]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_g8hn6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1111024379]
+shape = SubResource("CircleShape2D_gqlpr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1004686736]
+position = Vector2(-7.1054274e-15, -3)
+scale = Vector2(0.875, 0.875)
+sprite_frames = SubResource("SpriteFrames_vyk4q")
+animation = &"andar"
+autoplay = "andar"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=704897802 groups=["inimigos"]]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1638922677]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_iqj02")
+debug_color = Color(0.96236295, 0, 0.5078081, 0.41960785)
+
+[node name="detector_parede" type="RayCast2D" parent="." unique_id=565775438]
+position = Vector2(0, 5)
+target_position = Vector2(16, 0)
+collision_mask = 9
+
+[node name="detector_chao" type="RayCast2D" parent="." unique_id=62125006]
+position = Vector2(10, 0)
+target_position = Vector2(0, 8)
+
+[node name="detector_player" type="RayCast2D" parent="." unique_id=279394093]
+target_position = Vector2(41, 0)
+collision_mask = 2
+
+[node name="timer_andar" type="Timer" parent="." unique_id=1051708805]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="timer_andar" to="." method="_on_timer_andar_timeout"]

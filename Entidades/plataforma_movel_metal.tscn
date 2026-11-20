@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://etbxdi4vg6pp"]
+
+[ext_resource type="Script" uid="uid://cmmvy06kaxwt0" path="res://Scripts/plataforma_movel.gd" id="1_w3te7"]
+[ext_resource type="Texture2D" uid="uid://dfftn4iws388q" path="res://Sprites/Cenário/Blocks (16 x 16).png" id="2_q1nof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppyjr"]
+size = Vector2(64, 85)
+
+[node name="plataforma_movel_metal" type="AnimatableBody2D" unique_id=1783987291]
+script = ExtResource("1_w3te7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1056618990]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ppyjr")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=219724546]
+position = Vector2(0, 2)
+scale = Vector2(1.375, 1.1250001)
+texture = ExtResource("2_q1nof")
+region_enabled = true
+region_rect = Rect2(96, 64, 32, 16)
+
+[node name="alvo" type="Sprite2D" parent="." unique_id=1753806753]
+modulate = Color(1, 1, 1, 0.505)
+position = Vector2(0, -66)
+scale = Vector2(1.375, 1.1250001)
+texture = ExtResource("2_q1nof")
+region_enabled = true
+region_rect = Rect2(96, 64, 32, 16)

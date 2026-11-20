@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Local Windows export
+/Super Mario World.exe
+/Super Mario World.pck

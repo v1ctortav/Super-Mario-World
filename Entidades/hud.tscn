@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dlcrrjk8btnj1"]
+
+[ext_resource type="Script" uid="uid://f3ron7xb1r45" path="res://Scripts/hud.gd" id="1_bovj0"]
+[ext_resource type="Texture2D" uid="uid://6i31p08j04pf" path="res://Sprites/Mario/Mario Animações.png" id="1_lp54p"]
+[ext_resource type="FontFile" uid="uid://b5gcat6bab8yr" path="res://Fontes/dogica.ttf" id="2_bovj0"]
+[ext_resource type="Texture2D" uid="uid://b5ksqxp3xouyf" path="res://Sprites/UI/Coin (16 x 16).png" id="4_e0vgu"]
+[ext_resource type="FontFile" uid="uid://cqjg6s3iehs85" path="res://Fontes/PressStart2P-Regular.ttf" id="5_7bcem"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0vgu"]
+atlas = ExtResource("1_lp54p")
+region = Rect2(416, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7bcem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0vgu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bcem"]
+atlas = ExtResource("4_e0vgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4jab"]
+atlas = ExtResource("4_e0vgu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rij0"]
+atlas = ExtResource("4_e0vgu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf64t"]
+atlas = ExtResource("4_e0vgu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdebe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bcem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4jab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rij0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf64t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="hud" type="CanvasLayer" unique_id=1952930988]
+physics_interpolation_mode = 2
+auto_translate_mode = 2
+script = ExtResource("1_bovj0")
+
+[node name="vidas" type="HBoxContainer" parent="." unique_id=1297343774]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 55.0
+offset_bottom = 55.0
+alignment = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="vidas" unique_id=1161243960]
+position = Vector2(10, 15)
+scale = Vector2(0.875, 0.9375)
+sprite_frames = SubResource("SpriteFrames_7bcem")
+autoplay = "default"
+frame_progress = 0.9419169
+
+[node name="vidas" type="Label" parent="vidas" unique_id=194490330]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bovj0")
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 1
+
+[node name="moedas_pontos" type="VBoxContainer" parent="." unique_id=866005728]
+offset_left = 533.0
+offset_top = 35.0
+offset_right = 605.0
+offset_bottom = 67.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="moedas_pontos" unique_id=622475868]
+layout_mode = 2
+alignment = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="moedas_pontos/HBoxContainer" unique_id=584048632]
+position = Vector2(5, 5)
+scale = Vector2(0.8125, 0.8125)
+sprite_frames = SubResource("SpriteFrames_tdebe")
+autoplay = "default"
+
+[node name="moedas" type="Label" parent="moedas_pontos/HBoxContainer" unique_id=1221595981]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bovj0")
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 1
+
+[node name="pontos" type="Label" parent="moedas_pontos" unique_id=60746695]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bovj0")
+theme_override_font_sizes/font_size = 12
+text = "0"
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=244465434]
+offset_left = 445.0
+offset_top = 34.0
+offset_right = 517.0
+offset_bottom = 62.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=651651278]
+layout_mode = 2
+theme_override_constants/line_spacing = 3
+theme_override_fonts/font = ExtResource("5_7bcem")
+theme_override_font_sizes/font_size = 10
+text = "TEMPO:"
+vertical_alignment = 1
+
+[node name="tempo" type="Label" parent="VBoxContainer" unique_id=20454539]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bovj0")
+theme_override_font_sizes/font_size = 12
+text = "000000"
+vertical_alignment = 3

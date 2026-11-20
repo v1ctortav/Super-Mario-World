@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b10oc6iwwdkfo"]
+
+[ext_resource type="Script" uid="uid://cd7dfxlcwtk7i" path="res://Scripts/tela_matar.gd" id="1_pg3re"]
+[ext_resource type="Texture2D" uid="uid://dnbqlpekor65g" path="res://Sprites/fechar_cena1.png" id="2_qis6y"]
+[ext_resource type="Script" uid="uid://dpmdge44ikb08" path="res://Scripts/area_letal.gd" id="3_3vdv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs7gp"]
+size = Vector2(640, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfx7q"]
+size = Vector2(192, 360)
+
+[node name="tela_matar" type="Area2D" unique_id=1754700956]
+z_index = 100
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_pg3re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1826582593]
+position = Vector2(320, 180)
+shape = SubResource("RectangleShape2D_hs7gp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=819240123]
+texture = ExtResource("2_qis6y")
+centered = false
+
+[node name="area_letal" type="Area2D" parent="." unique_id=915368275 groups=["area_letal"]]
+collision_layer = 0
+collision_mask = 26
+script = ExtResource("3_3vdv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_letal" unique_id=892749094 groups=["area_letal"]]
+position = Vector2(544, 180)
+shape = SubResource("RectangleShape2D_qfx7q")
+debug_color = Color(0.76070434, 0.119744755, 0.24070615, 0.41960785)
+
+[node name="aumentar_velocidade" type="Timer" parent="." unique_id=599072342]
+wait_time = 8.0
+autostart = true
+
+[connection signal="area_entered" from="area_letal" to="area_letal" method="_on_area_entered"]
+[connection signal="body_entered" from="area_letal" to="area_letal" method="_on_body_entered"]
+[connection signal="timeout" from="aumentar_velocidade" to="." method="_on_aumentar_velocidade_timeout"]

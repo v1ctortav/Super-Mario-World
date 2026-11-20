@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://d4iv61udbp8el"]
+
+[ext_resource type="Script" uid="uid://cl85a8w5ojkwy" path="res://Scripts/koopa.gd" id="1_6ymv1"]
+[ext_resource type="Texture2D" uid="uid://dnfmi0nfqhvhl" path="res://Sprites/Koopa.png" id="2_ae62u"]
+[ext_resource type="Texture2D" uid="uid://b5xu3gl7vfi7h" path="res://Sprites/Koopa_casco.png" id="3_7p11p"]
+[ext_resource type="Texture2D" uid="uid://b3oprt7mfu8jo" path="res://Sprites/Koopa_morto.png" id="4_ae62u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4rdo"]
+size = Vector2(15, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbx1y"]
+atlas = ExtResource("2_ae62u")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfis3"]
+atlas = ExtResource("2_ae62u")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6hcv"]
+atlas = ExtResource("2_ae62u")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhlhl"]
+atlas = ExtResource("2_ae62u")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fs13"]
+atlas = ExtResource("3_7p11p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjchs"]
+atlas = ExtResource("3_7p11p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lgfj"]
+atlas = ExtResource("3_7p11p")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5sab"]
+atlas = ExtResource("3_7p11p")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p11p"]
+atlas = ExtResource("4_ae62u")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4rdo"]
+atlas = ExtResource("4_ae62u")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpa62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbx1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfis3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6hcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhlhl")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fs13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjchs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lgfj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5sab")
+}],
+"loop": true,
+"name": &"casco",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p11p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4rdo")
+}],
+"loop": false,
+"name": &"morrer",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85jrc"]
+size = Vector2(21, 24)
+
+[node name="koopa" type="CharacterBody2D" unique_id=526819822]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_6ymv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=502676520]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_w4rdo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=517120315]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_jpa62")
+animation = &"andar"
+autoplay = "andar"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=271378107 groups=["inimigos", "koopas"]]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=287317343 groups=["koopas"]]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_85jrc")
+debug_color = Color(0.93425804, 0, 0.4577403, 0.41960785)
+
+[node name="detector_parede" type="RayCast2D" parent="." unique_id=1328065222]
+position = Vector2(0, 2)
+target_position = Vector2(17, 0)
+collision_mask = 9
+
+[node name="detector_chao" type="RayCast2D" parent="." unique_id=1907449821]
+position = Vector2(13, 0)
+target_position = Vector2(0, 15)
+
+[node name="timer_andar" type="Timer" parent="." unique_id=1932455755]
+wait_time = 30.0
+autostart = true
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="timer_andar" to="." method="_on_timer_andar_timeout"]

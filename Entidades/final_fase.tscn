@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://76t05yco8j2h"]
+
+[ext_resource type="Script" uid="uid://2ek58ljhi366" path="res://Scripts/final_fase.gd" id="1_3ih8b"]
+[ext_resource type="Texture2D" uid="uid://dnbqlpekor65g" path="res://Sprites/fechar_cena1.png" id="2_2e13n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e13n"]
+size = Vector2(185.5, 233)
+
+[node name="final_fase" type="Area2D" unique_id=784165773]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_3ih8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1515769481]
+shape = SubResource("RectangleShape2D_2e13n")
+debug_color = Color(0.340874, 0.35920107, 1, 0.41960785)
+
+[node name="fechar_cena" type="Sprite2D" parent="." unique_id=915374711]
+z_index = 10
+texture = ExtResource("2_2e13n")
+centered = false
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

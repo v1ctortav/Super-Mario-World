@@ -1,0 +1,218 @@
+[gd_scene format=4 uid="uid://c3p8b7bsna5qm"]
+
+[ext_resource type="Script" uid="uid://18jw0qk03nki" path="res://Scripts/vitoria.gd" id="1_pvew5"]
+[ext_resource type="TileSet" uid="uid://dx36wc7gdcqhy" path="res://Tiles/Terreno.tres" id="1_shcq1"]
+[ext_resource type="PackedScene" uid="uid://do308h47en423" path="res://Entidades/bloco_moeda.tscn" id="2_ebhb3"]
+[ext_resource type="Texture2D" uid="uid://bi3d2l4a1bfyk" path="res://Sprites/Mario/Mario-final.png" id="3_ebhb3"]
+[ext_resource type="PackedScene" uid="uid://tyy443nqmalx" path="res://Entidades/moeda.tscn" id="4_acpag"]
+[ext_resource type="PackedScene" uid="uid://pwkm7q02ncxc" path="res://Entidades/goomba.tscn" id="5_qtuxm"]
+[ext_resource type="Texture2D" uid="uid://cbjg3m145i7ia" path="res://Sprites/1 - Grassland/Background parts/_Complete_static_BG_(288 x 208).png" id="6_qtuxm"]
+[ext_resource type="Texture2D" uid="uid://bha5ghueu4oqt" path="res://Sprites/vitoria.png" id="7_6ltmy"]
+[ext_resource type="FontFile" uid="uid://cqjg6s3iehs85" path="res://Fontes/PressStart2P-Regular.ttf" id="9_4j314"]
+[ext_resource type="Texture2D" uid="uid://cdw5bdf2osduy" path="res://Sprites/arrow2.png" id="11_vuxgr"]
+[ext_resource type="Texture2D" uid="uid://dnbqlpekor65g" path="res://Sprites/fechar_cena1.png" id="12_0d7di"]
+[ext_resource type="AudioStream" uid="uid://b2towqcsty80b" path="res://Sons/opcao.mp3" id="12_pvew5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k16hr"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acpag"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtuxm"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ltmy"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5mle"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1nba"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8ngc"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmlo1"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvew5"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(192, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j314"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(216, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwff"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(240, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuxgr"]
+atlas = ExtResource("3_ebhb3")
+region = Rect2(264, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0d7di"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k16hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acpag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtuxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ltmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5mle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1nba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8ngc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmlo1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvew5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j314")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuxgr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="vitoria" type="Node2D" unique_id=1523678817]
+script = ExtResource("1_pvew5")
+
+[node name="cenario" type="Node" parent="." unique_id=1486492213]
+
+[node name="cenario" type="TileMapLayer" parent="cenario" unique_id=628017514]
+position = Vector2(0, -6)
+tile_map_data = PackedByteArray("AAAAABUABwACAAMAAAABABUABwACAAMAAAACABUABwACAAMAAAADABUABwACAAMAAAAEABUABwACAAMAAAAFABUABwACAAMAAAAGABUABwACAAMAAAAHABUABwACAAMAAAAIABUABwACAAMAAAAJABUABwACAAMAAAAKABUABwACAAMAAAALABUABwACAAMAAAAMABUABwACAAMAAAANABUABwACAAMAAAAOABUABwACAAMAAAAPABUABwACAAMAAAAQABUABwACAAMAAAARABUABwACAAMAAAASABUABwACAAMAAAATABUABwACAAMAAAAUABUABwACAAMAAAAAABYABwAEAAUAAAABABYABwAEAAUAAAACABYABwAEAAUAAAADABYABwAEAAUAAAAEABYABwAEAAUAAAAFABYABwAEAAUAAAAGABYABwAEAAUAAAAHABYABwAEAAUAAAAIABYABwAEAAUAAAAJABYABwAEAAUAAAAKABYABwAEAAUAAAALABYABwAEAAUAAAAMABYABwAEAAUAAAANABYABwAEAAUAAAAOABYABwAEAAUAAAAPABYABwAEAAUAAAAQABYABwAEAAUAAAARABYABwAEAAUAAAASABYABwAEAAUAAAATABYABwAEAAUAAAAUABYABwAEAAUAAAABABMAAgABAAEAAAADABMAAgAFAAEAAAACABQAAgABAAUAAAAFABQACAABAAEAAAAdABUABwACAAMAAAAdABYABwAEAAUAAAAeABUABwACAAMAAAAeABYABwAEAAUAAAAfABUABwACAAMAAAAfABYABwAEAAUAAAAgABQACAABAAEAAAAgABUABwACAAMAAAAgABYABwAEAAUAAAAhABUABwACAAMAAAAhABYABwAEAAUAAAAiABMABAAAAAAAAAAiABQABAAAAAEAAAAiABUABwACAAMAAAAiABYABwAEAAUAAAAjABUABwACAAMAAAAjABYABwAEAAUAAAAkABQAAgABAAUAAAAkABUABwACAAMAAAAkABYABwAEAAUAAAAlABMAAgAFAAEAAAAlABUABwACAAMAAAAlABYABwAEAAUAAAAmABMAAgABAAEAAAAmABUABwACAAMAAAAmABYABwAEAAUAAAAnABUABwACAAMAAAAnABYABwAEAAUAAAAVABUABwACAAMAAAAWABUABwACAAMAAAAXABUABwACAAMAAAAYABUABwACAAMAAAAZABUABwACAAMAAAAaABUABwACAAMAAAAbABUABwACAAMAAAAcABUABwACAAMAAAAVABYABwAEAAUAAAAWABYABwAEAAUAAAAXABYABwAEAAUAAAAYABYABwAEAAUAAAAZABYABwAEAAUAAAAaABYABwAEAAUAAAAbABYABwAEAAUAAAAcABYABwAEAAUAAAATABQACAABAAEAAAA=")
+tile_set = ExtResource("1_shcq1")
+
+[node name="bloco_moeda" parent="cenario" unique_id=399004506 instance=ExtResource("2_ebhb3")]
+position = Vector2(136, 280)
+
+[node name="bloco_moeda2" parent="cenario" unique_id=505727402 instance=ExtResource("2_ebhb3")]
+position = Vector2(152, 280)
+
+[node name="bloco_moeda3" parent="cenario" unique_id=1159296241 instance=ExtResource("2_ebhb3")]
+position = Vector2(168, 280)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cenario" unique_id=297270177]
+position = Vector2(552, 282)
+sprite_frames = SubResource("SpriteFrames_0d7di")
+autoplay = "default"
+frame = 5
+frame_progress = 0.121197455
+
+[node name="moeda" parent="cenario" unique_id=96196472 instance=ExtResource("4_acpag")]
+position = Vector2(448, 320)
+
+[node name="moeda2" parent="cenario" unique_id=863666384 instance=ExtResource("4_acpag")]
+position = Vector2(424, 320)
+
+[node name="moeda3" parent="cenario" unique_id=2002582585 instance=ExtResource("4_acpag")]
+position = Vector2(400, 320)
+
+[node name="goomba" parent="cenario" unique_id=1582579417 instance=ExtResource("5_qtuxm")]
+position = Vector2(192, 322)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="cenario" unique_id=875612443]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="cenario/ParallaxBackground" unique_id=842455281]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(399, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="cenario/ParallaxBackground/ParallaxLayer" unique_id=1040331687]
+scale = Vector2(1.3854167, 1.6250001)
+texture = ExtResource("6_qtuxm")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="cenario" unique_id=1342022567]
+position = Vector2(330, 142)
+texture = ExtResource("7_6ltmy")
+
+[node name="Label" type="Label" parent="." unique_id=1679563183]
+offset_left = 224.0
+offset_top = 232.0
+offset_right = 424.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_4j314")
+theme_override_font_sizes/font_size = 8
+text = "jogar novamente?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sim" type="Button" parent="." unique_id=554418314]
+offset_left = 268.0
+offset_top = 256.0
+offset_right = 300.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_4j314")
+theme_override_font_sizes/font_size = 8
+text = "sim"
+flat = true
+
+[node name="nao" type="Button" parent="." unique_id=2141359273]
+offset_left = 356.0
+offset_top = 256.0
+offset_right = 388.0
+offset_bottom = 271.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_4j314")
+theme_override_font_sizes/font_size = 8
+text = "não"
+flat = true
+
+[node name="seta" type="Sprite2D" parent="." unique_id=200436727]
+position = Vector2(264, 264)
+texture = ExtResource("11_vuxgr")
+
+[node name="fechar_cena" type="Sprite2D" parent="." unique_id=1037041799]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+texture = ExtResource("12_0d7di")
+centered = false
+
+[node name="score" type="Label" parent="." unique_id=351337259]
+offset_left = 224.0
+offset_top = 192.0
+offset_right = 432.0
+offset_bottom = 215.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_4j314")
+theme_override_font_sizes/font_size = 12
+text = "SCORE: 000000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Opcao" type="AudioStreamPlayer" parent="." unique_id=1205745850]
+stream = ExtResource("12_pvew5")

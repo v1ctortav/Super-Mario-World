@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cqvmlmtfcpkwk"]
+
+[ext_resource type="Script" uid="uid://8fjie7byuh6k" path="res://Scripts/peixe.gd" id="1_80ks8"]
+[ext_resource type="Texture2D" uid="uid://bdrkq5nm16dqo" path="res://Sprites/Mar/Peixe.png" id="2_2phax"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u7snh"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2phax"]
+atlas = ExtResource("2_2phax")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80ks8"]
+atlas = ExtResource("2_2phax")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7snh"]
+atlas = ExtResource("2_2phax")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jh61l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2phax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80ks8")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7snh")
+}],
+"loop": false,
+"name": &"morrer",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nrpd"]
+radius = 9.0
+
+[node name="peixe" type="CharacterBody2D" unique_id=1441058015]
+script = ExtResource("1_80ks8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1204403133]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_u7snh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=732462807]
+position = Vector2(1.1920929e-07, -2)
+scale = Vector2(0.8945313, 0.95703125)
+sprite_frames = SubResource("SpriteFrames_jh61l")
+animation = &"andar"
+autoplay = "andar"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1294853043 groups=["inimigos"]]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=119299843]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_1nrpd")
+debug_color = Color(0.96236295, 0, 0.5078081, 0.41960785)
+
+[node name="detector_parede" type="RayCast2D" parent="." unique_id=682795256]
+position = Vector2(0, 1)
+target_position = Vector2(16, 0)
+collision_mask = 9
+
+[node name="timer_andar" type="Timer" parent="." unique_id=1300340259]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="timer_andar" to="." method="_on_timer_andar_timeout"]

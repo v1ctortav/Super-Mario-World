@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c084pdvwowitq"]
+
+[ext_resource type="Script" uid="uid://bknb4j8gf6ruk" path="res://Scripts/camera.gd" id="1_epyiq"]
+
+[node name="camera" type="Camera2D" unique_id=1597637596]
+zoom = Vector2(1.4, 1.4)
+limit_left = 0
+limit_bottom = 640
+script = ExtResource("1_epyiq")

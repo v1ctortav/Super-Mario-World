@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ubkwthefabbj"]
+
+[ext_resource type="Script" uid="uid://cjwo8ydfee74x" path="res://Scripts/osso.gd" id="1_05ty2"]
+[ext_resource type="Texture2D" uid="uid://tlfi3td3w0yt" path="res://Sprites/3 - Skeleton/Spinning_Bone (16 x 16).png" id="1_mmy8q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_05ty2"]
+radius = 6.0827627
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x6hs"]
+atlas = ExtResource("1_mmy8q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op7l7"]
+atlas = ExtResource("1_mmy8q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8w77"]
+atlas = ExtResource("1_mmy8q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qay0y"]
+atlas = ExtResource("1_mmy8q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk1vt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x6hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op7l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8w77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qay0y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="osso" type="Area2D" unique_id=1876257705 groups=["projeteis"]]
+collision_mask = 3
+script = ExtResource("1_05ty2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1243004146]
+shape = SubResource("CircleShape2D_05ty2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=585494775]
+sprite_frames = SubResource("SpriteFrames_kk1vt")
+autoplay = "default"
+
+[node name="destruir" type="Timer" parent="." unique_id=616124596]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="destruir" to="." method="_on_destruir_timeout"]

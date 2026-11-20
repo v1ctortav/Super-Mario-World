@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://buoermnbndugq"]
+
+[ext_resource type="Script" uid="uid://nop58ytp5vgh" path="res://Scripts/krabby.gd" id="1_qt7x5"]
+[ext_resource type="Texture2D" uid="uid://clkvcdepi5fbl" path="res://Sprites/Inimigos/9 - Snip Snap Crab/Movement_(Flip_image_back_and_forth) (32 x 32).png" id="1_u7j0o"]
+[ext_resource type="Texture2D" uid="uid://c0t005n721kp1" path="res://Sprites/Inimigos/9 - Snip Snap Crab/Hurt (32 x 32).png" id="2_qt7x5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gr6av"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcedb"]
+atlas = ExtResource("1_u7j0o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mh3i"]
+atlas = ExtResource("2_qt7x5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytgni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcedb")
+}],
+"loop": true,
+"name": &"andar",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_0mh3i")
+}],
+"loop": false,
+"name": &"morrer",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8s8o"]
+radius = 9.0
+
+[node name="krabby" type="CharacterBody2D" unique_id=1458435758]
+collision_layer = 8
+collision_mask = 13
+script = ExtResource("1_qt7x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=170799817]
+shape = SubResource("CircleShape2D_gr6av")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1771377383]
+position = Vector2(0, -4.9999995)
+scale = Vector2(0.7890625, 0.7890625)
+sprite_frames = SubResource("SpriteFrames_ytgni")
+animation = &"morrer"
+autoplay = "andar"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=306326616 groups=["inimigos"]]
+collision_layer = 8
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=941995993]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_x8s8o")
+debug_color = Color(0.96236295, 0, 0.5078081, 0.41960785)
+
+[node name="detector_parede" type="RayCast2D" parent="." unique_id=1324212]
+position = Vector2(0, 2)
+target_position = Vector2(16, 0)
+collision_mask = 9
+
+[node name="detector_chao" type="RayCast2D" parent="." unique_id=1972540251]
+position = Vector2(10, 0)
+target_position = Vector2(0, 8)
+
+[node name="detector_player" type="RayCast2D" parent="." unique_id=1054971813]
+target_position = Vector2(41, 0)
+collision_mask = 2
+
+[node name="timer_andar" type="Timer" parent="." unique_id=265288308]
+wait_time = 30.0
+autostart = true
+
+[node name="timer_andar2" type="Timer" parent="." unique_id=1548994743]
+wait_time = 0.4
+autostart = true
+
+[connection signal="timeout" from="timer_andar" to="." method="_on_timer_andar_timeout"]
+[connection signal="timeout" from="timer_andar2" to="." method="_on_timer_andar_2_timeout"]

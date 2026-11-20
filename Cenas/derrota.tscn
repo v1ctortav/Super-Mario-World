@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dd1db2aecsnyc"]
+
+[ext_resource type="Texture2D" uid="uid://yv742aiywafu" path="res://Sprites/game-over.png" id="1_2qh5b"]
+[ext_resource type="Script" uid="uid://dosl4rat2a7pd" path="res://Scripts/derrota.gd" id="1_5x21u"]
+[ext_resource type="FontFile" uid="uid://cqjg6s3iehs85" path="res://Fontes/PressStart2P-Regular.ttf" id="3_8q7v2"]
+[ext_resource type="Texture2D" uid="uid://d12668t05umol" path="res://Sprites/arrow.png" id="4_8q7v2"]
+[ext_resource type="Texture2D" uid="uid://dnbqlpekor65g" path="res://Sprites/fechar_cena1.png" id="5_l3bg0"]
+[ext_resource type="AudioStream" uid="uid://b2towqcsty80b" path="res://Sons/opcao.mp3" id="6_8q7v2"]
+
+[node name="derrota" type="Node2D" unique_id=704423317]
+script = ExtResource("1_5x21u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=397689985]
+texture = ExtResource("1_2qh5b")
+centered = false
+
+[node name="Label" type="Label" parent="." unique_id=1099056898]
+offset_left = 216.0
+offset_top = 232.0
+offset_right = 416.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8q7v2")
+theme_override_font_sizes/font_size = 8
+text = "jogar novamente?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sim" type="Button" parent="." unique_id=1604759482]
+offset_left = 260.0
+offset_top = 256.0
+offset_right = 292.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("3_8q7v2")
+theme_override_font_sizes/font_size = 8
+text = "sim"
+flat = true
+
+[node name="nao" type="Button" parent="." unique_id=2054154095]
+offset_left = 348.0
+offset_top = 256.0
+offset_right = 380.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("3_8q7v2")
+theme_override_font_sizes/font_size = 8
+text = "não"
+flat = true
+
+[node name="seta" type="Sprite2D" parent="." unique_id=386551874]
+position = Vector2(256, 264)
+texture = ExtResource("4_8q7v2")
+
+[node name="fechar_cena" type="Sprite2D" parent="." unique_id=1039917207]
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+position = Vector2(1, 0)
+texture = ExtResource("5_l3bg0")
+centered = false
+
+[node name="Opcao" type="AudioStreamPlayer" parent="." unique_id=1160520149]
+stream = ExtResource("6_8q7v2")

@@ -1,0 +1,17 @@
+[gd_resource type="TileSet" format=3 uid="uid://dghblef7fvxs5"]
+
+[ext_resource type="Texture2D" uid="uid://c15nkgrew6g36" path="res://Sprites/Cenário/Water_frames (16 x 32).png" id="1_53m8d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tltss"]
+texture = ExtResource("1_53m8d")
+0:0/animation_frame_0/duration = 0.5
+0:0/animation_frame_1/duration = 0.5
+0:0/0 = 0
+0:1/animation_frame_0/duration = 0.5
+0:1/animation_frame_1/duration = 0.5
+0:1/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_tltss")

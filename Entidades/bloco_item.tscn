@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dr1dtpuqw68n5"]
+
+[ext_resource type="Script" uid="uid://csmm8mxawyfql" path="res://Scripts/bloco_item.gd" id="1_4qbvv"]
+[ext_resource type="Texture2D" uid="uid://dclq70k7qprs8" path="res://Sprites/Cenário/Blocos.png" id="2_p0h24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow4c8"]
+size = Vector2(16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18hr6"]
+atlas = ExtResource("2_p0h24")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuqs1"]
+atlas = ExtResource("2_p0h24")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mw2xk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18hr6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuqs1")
+}],
+"loop": true,
+"name": &"quebrado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jli80"]
+size = Vector2(16, 4)
+
+[node name="bloco_item" type="StaticBody2D" unique_id=1860668399]
+collision_mask = 26
+script = ExtResource("1_4qbvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2030428083]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ow4c8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1921553995]
+position = Vector2(2.9802322e-08, -2.3841858e-07)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mw2xk")
+autoplay = "default"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=552166801]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=2044035341]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_jli80")
+debug_color = Color(0.96568924, 0, 0.4880948, 0.41960785)
+
+[node name="spaw_item" type="Node2D" parent="." unique_id=1577029754]
+position = Vector2(0, -24)
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

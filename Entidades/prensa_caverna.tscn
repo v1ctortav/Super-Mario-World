@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://vh2int52fb65"]
+
+[ext_resource type="Script" uid="uid://dttfwkesfuuhy" path="res://Scripts/prensa.gd" id="1_os4g6"]
+[ext_resource type="Texture2D" uid="uid://17c7uytfrgpv" path="res://Sprites/prensa-metal.png" id="2_os4g6"]
+[ext_resource type="Script" uid="uid://dpmdge44ikb08" path="res://Scripts/area_letal.gd" id="3_w76uw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppyjr"]
+size = Vector2(64, 167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56nmm"]
+size = Vector2(58, 2)
+
+[node name="prensa_caverna" type="AnimatableBody2D" unique_id=1783987291]
+collision_mask = 7
+script = ExtResource("1_os4g6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1056618990]
+position = Vector2(0, -74.5)
+shape = SubResource("RectangleShape2D_ppyjr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=161802980]
+position = Vector2(9.536743e-07, -95)
+scale = Vector2(1, 1.3125002)
+texture = ExtResource("2_os4g6")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 32)
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1572237696]
+position = Vector2(5.684342e-14, -137)
+scale = Vector2(1, 1.3125002)
+texture = ExtResource("2_os4g6")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=219724546]
+position = Vector2(4.7683716e-07, -31.5)
+scale = Vector2(1, 1.3281249)
+texture = ExtResource("2_os4g6")
+region_rect = Rect2(96, 64, 32, 16)
+
+[node name="alvo" type="Sprite2D" parent="." unique_id=167118749]
+modulate = Color(1, 1, 1, 0.48600003)
+position = Vector2(4.7683716e-07, 54.000004)
+scale = Vector2(1, 1.3281249)
+texture = ExtResource("2_os4g6")
+region_rect = Rect2(96, 64, 32, 16)
+
+[node name="area_letal" type="Area2D" parent="." unique_id=618499655 groups=["area_letal"]]
+position = Vector2(3241, 266.5)
+collision_layer = 0
+collision_mask = 26
+script = ExtResource("3_w76uw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_letal" unique_id=412199690 groups=["area_letal"]]
+position = Vector2(-3241, -256.5)
+shape = SubResource("RectangleShape2D_56nmm")
+debug_color = Color(0.76070434, 0.119744755, 0.24070615, 0.41960785)
+
+[connection signal="area_entered" from="area_letal" to="area_letal" method="_on_area_entered"]
+[connection signal="body_entered" from="area_letal" to="area_letal" method="_on_body_entered"]
